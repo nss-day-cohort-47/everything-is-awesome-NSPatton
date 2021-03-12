@@ -5,8 +5,9 @@ export const LegoDetail = (brick) => {
   let block = `<section class="block-wrapper" style="background-color:#${brick.ColorHex}">
               <h3>Name: ${brick.LegoName.toUpperCase()}</h3>
               <h4>Notes: ${brick.Notes}</h4>
+              <h4>Materials: ${brick.Material}</h4>
               <div class="block-years">Manufactured ${brick.YearFrom} - ${brick.YearTo}</div>
-              </section>
+             </section>
               `;
   const link = brick.ColorstreamLinkImage;
   if (link) {
