@@ -21,10 +21,27 @@ navElement.addEventListener("click", (event) => {
 	}
 })
 
+navElement.addEventListener("change", (event => {
+	if(event.target.id === "material-selector") {
+		const material = event.target.value;
+		filterLegoMaterial(material)
+	}
+
+}))
+
 
 const filterLegos = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
 		if (singleLego.LegoName.includes(whatFilter)) {
+			return singleLego;
+		}
+	})
+	makeLegoList(filterArray);
+}
+
+const filterLegoMaterial = (whatFilter) => {
+	const filterArray = useLegos().filter(singleLego => {
+		if (singleLego.Material.includes(whatFilter)) {
 			return singleLego;
 		}
 	})
