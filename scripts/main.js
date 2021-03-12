@@ -29,6 +29,27 @@ navElement.addEventListener("change", (event => {
 
 }))
 
+const legoIdElement = document.querySelector("#legoIdElement")
+legoIdElement.addEventListener("keyup", event => {
+    if (event.key === 'Enter') {
+        const legoIdValue = (event.target.value)
+        // console.log("user wants to see", legoIdValue)
+        filterLegoIdValue(legoIdValue);
+    } 
+})
+const filterLegoIdValue = (whatFilter) => {
+    const filterArray = useLegos().filter(singleLego => {
+        if (singleLego.LegoId === (whatFilter)) {
+            return singleLego;
+        } 
+    })
+    if (filterArray.length === 0) {
+        document.getElementById("all-legos").innerHTML = "<h3>We couldn't find your lego :(</h3>"
+    } else {
+        makeLegoList(filterArray);
+    }
+}
+
 
 const filterLegos = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
